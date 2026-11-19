@@ -247,3 +247,15 @@ h2 em { font-style: normal; color: #3268ec; }
   .site-header { position: static; }
   .featured-card,.mini-card,.skill-card,.experience-card { break-inside: avoid; }
 }
+
+/* Preserve the requested four-card layout on standard 1024px+ laptops. */
+@media (min-width: 981px) and (max-width: 1150px) {
+  .featured-grid, .more-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .featured-card { padding: 11px; }
+  .featured-category { font-size: 9px; }
+  .featured-card h3 { font-size: 17px; }
+  .featured-card .project-art { height: 135px; }
+  .featured-description { font-size: 11px; }
+  .tech-tags span { font-size: 8px; }
+  .project-link { font-size: 9px; }
+}
