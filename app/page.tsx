@@ -5,7 +5,7 @@ import {
   ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Check,
   ChevronRight, CircleDot, Code2, Cpu, ExternalLink, FileText, Github,
   GraduationCap, Layers3, Linkedin, Mail, Menu, MonitorCog, Rocket,
-  ScanEye, ServerCog, Smartphone, Sparkles, X,
+  ScanEye, ServerCog, Smartphone, Sparkles, Video, Languages, Gamepad2, X,
 } from "lucide-react";
 
 type Category = "Web Apps" | "Games" | "AI / ML" | "Systems" | "Embedded" | "Research" | "Mobile Apps";
@@ -17,7 +17,8 @@ type Project = {
   tech: string[];
   categories: Category[];
   style: "blue" | "red" | "green" | "yellow" | "purple" | "cyan";
-  art: "dots" | "snake" | "research" | "study" | "notes" | "todo" | "dragon" | "drone" | "brain" | "goals" | "embedded" | "code";
+  art: "dots" | "scene" | "translate" | "snake" | "research" | "study" | "notes" | "todo" | "dragon" | "dragonlume" | "drone" | "brain" | "goals" | "embedded" | "code";
+  status?: "In development" | "Prototype";
   image?: string;
   demo?: string;
   github?: string;
@@ -28,42 +29,71 @@ type Project = {
 const featured: Project[] = [
   {
     title: "DOT AI",
-    subtitle: "AI-powered visual creation platform",
-    description: "An interactive visual-learning and creation project combining structured graphics, a visual engine and AI-assisted exploration.",
+    subtitle: "AI-powered visual learning and creation",
+    description: "An evolving visual-learning platform combining structured graphics, a reusable visual engine, and AI-assisted exploration.",
     tech: ["Next.js", "TypeScript", "AI / LLMs", "Visual Engine"],
     categories: ["Web Apps", "AI / ML"],
-    style: "blue", art: "dots", image: "/projects/dot-ai.png",
+    style: "blue", art: "dots", status: "In development",
     github: "https://github.com/Forkan01/dot-ai",
     feature: true,
   },
   {
-    title: "Snake AI",
-    subtitle: "Deep reinforcement learning",
-    description: "Autonomous Snake gameplay with deep reinforcement learning, focused on training an agent to improve its decision-making.",
+    title: "Scene Studio",
+    subtitle: "JSON-powered infographic video maker",
+    description: "A browser-based 2D motion graphics editor with scenes, timeline keyframes, JSON project files and video export.",
+    tech: ["Next.js", "TypeScript", "JSON", "Video Export"],
+    categories: ["Web Apps"],
+    style: "purple", art: "scene",
+    github: "https://github.com/Forkan01/SceneStudio",
+    feature: true,
+  },
+  {
+    title: "LearnTranslate",
+    subtitle: "German–English visual learning app",
+    description: "A language-learning web app for searching words and sentences, exploring grammar and examples, and organizing saved learning cards.",
+    tech: ["Next.js", "TypeScript", "Supabase", "AI"],
+    categories: ["Web Apps", "AI / ML"],
+    style: "green", art: "translate", status: "In development",
+    github: "https://github.com/Forkan01/learntranslate",
+    feature: true,
+  },
+  {
+    title: "Deep Reinforcement Learning for Gaming",
+    subtitle: "Snake AI local",
+    description: "A Snake-game agent trained with deep reinforcement learning to learn navigation and improve decisions through gameplay.",
     tech: ["Python", "Deep RL", "Neural Networks", "Pygame"],
     categories: ["AI / ML", "Games"],
-    style: "red", art: "snake", image: "/projects/snake-ai.png",
+    style: "red", art: "snake",
     github: "https://github.com/Forkan01/Automatic-Game-Playing-with-DL--Autonomous-Sys.-B",
     feature: true,
   },
   {
     title: "Autonomous Driving Research",
     subtitle: "GAIA-X · CARLA · ROS / ROS2",
-    description: "University research work involving simulation, sensor and geospatial data, and development workflows for autonomous driving.",
+    description: "University research involving simulation, sensor and geospatial data, and software workflows for autonomous driving.",
     tech: ["Python", "C++", "CARLA", "ROS2"],
     categories: ["Research", "Systems", "AI / ML"],
-    style: "green", art: "research", image: "/projects/autonomous-driving.png",
-    details: "#experience",
+    style: "green", art: "research",
+    details: "#research",
     feature: true,
   },
   {
-    title: "Studly",
+    title: "Studly Prototype",
     subtitle: "Student productivity platform",
-    description: "A student-focused product prototype bringing study management and productivity tools into a single, approachable experience.",
+    description: "A student-focused product prototype bringing study management and productivity tools into an approachable experience.",
     tech: ["Web App", "Student Tools", "Product Design"],
     categories: ["Web Apps"],
-    style: "yellow", art: "study", image: "/projects/studly.png",
+    style: "yellow", art: "study", status: "Prototype",
     demo: "https://studly-everything-student-needs.lovable.app/",
+    feature: true,
+  },
+  {
+    title: "DragonLume",
+    subtitle: "Cute 3D dragon life & adventure game",
+    description: "An original game project in development: raise and bond with dragons, explore a fantasy world and discover adventures.",
+    tech: ["3D Game", "Game Design", "Godot", "Characters"],
+    categories: ["Games"],
+    style: "purple", art: "dragonlume", status: "In development",
     feature: true,
   },
 ];
@@ -74,7 +104,7 @@ const moreProjects: Project[] = [
     description: "React Native notes app with authentication and a Supabase backend.",
     tech: ["React Native", "Expo", "Supabase"],
     categories: ["Mobile Apps", "Web Apps"],
-    style: "blue", art: "notes", image: "/projects/note-taking.png",
+    style: "blue", art: "notes",
     github: "https://github.com/Forkan01/Note-Taking-App-with-React-Native",
   },
   {
@@ -82,7 +112,7 @@ const moreProjects: Project[] = [
     description: "A minimal task-list app for adding and removing tasks.",
     tech: ["Flutter", "Dart", "Mobile"],
     categories: ["Mobile Apps"],
-    style: "cyan", art: "todo", image: "/projects/todo-flutter.png",
+    style: "cyan", art: "todo",
     github: "https://github.com/Forkan01/Todo_Flutter",
   },
   {
@@ -90,7 +120,7 @@ const moreProjects: Project[] = [
     description: "Pixel-art platforming adventure created in Godot.",
     tech: ["Godot", "2D Game", "GDScript"],
     categories: ["Games"],
-    style: "purple", art: "dragon", image: "/projects/dragon-slayer.png",
+    style: "purple", art: "dragon",
     github: "https://github.com/Forkan01/Dragon-Slayer-GODOT",
   },
   {
@@ -98,7 +128,7 @@ const moreProjects: Project[] = [
     description: "Deep-learning coursework for plant and weed detection in an agricultural drone context.",
     tech: ["Deep Learning", "Computer Vision", "Drone"],
     categories: ["AI / ML", "Research", "Embedded"],
-    style: "green", art: "drone", image: "/projects/drone-farming.png",
+    style: "green", art: "drone",
     github: "https://github.com/Forkan01/Autonomous-Systems-B-Lab_Group-D",
   },
   {
@@ -106,7 +136,7 @@ const moreProjects: Project[] = [
     description: "An interactive puzzle and learning-oriented app concept.",
     tech: ["App Prototype", "AI", "Learning"],
     categories: ["Web Apps", "AI / ML"],
-    style: "red", art: "brain", image: "/projects/brain-boost.png",
+    style: "red", art: "brain", status: "Prototype",
     demo: "https://brainboost.lovable.app",
   },
   {
@@ -114,7 +144,7 @@ const moreProjects: Project[] = [
     description: "A gamified daily-goal app prototype.",
     tech: ["App Prototype", "Gamification"],
     categories: ["Web Apps", "Games"],
-    style: "purple", art: "goals", image: "/projects/solo-leveling.png",
+    style: "purple", art: "goals", status: "Prototype",
     demo: "https://quest-for-life-ai.lovable.app/",
   },
   {
@@ -122,7 +152,7 @@ const moreProjects: Project[] = [
     description: "Team engineering project for an agricultural robot.",
     tech: ["Robotics", "Embedded", "Engineering"],
     categories: ["Embedded", "Systems"],
-    style: "yellow", art: "embedded", image: "/projects/farming-robot.png",
+    style: "yellow", art: "embedded",
     github: "https://github.com/Neaz145126/Team-4",
   },
   {
@@ -130,7 +160,7 @@ const moreProjects: Project[] = [
     description: "A Snake game implemented as a C programming project.",
     tech: ["C", "Game Development"],
     categories: ["Games", "Systems"],
-    style: "cyan", art: "code", image: "/projects/snake-c.png",
+    style: "cyan", art: "code",
     github: "https://github.com/Forkan01/SnakeGame-with-C_CS2",
   },
 ];
@@ -151,6 +181,9 @@ function ProjectArt({ project }: { project: Project }) {
       <div className="art-fallback" aria-hidden="true">
         <span className="art-corner">{project.art === "snake" ? "AI / TRAINING" : project.art === "research" ? "SENSORS / SIMULATION" : "BUILD / CREATE"}</span>
         {project.art === "dots" && <div className="demo-interface"><span className="demo-sidebar">✦<br/>◻<br/>◎<br/>⌘</span><div className="demo-canvas"><Rocket size={58} strokeWidth={1.6}/><i className="dot dot-a"/><i className="dot dot-b"/><i className="dot dot-c"/></div><span className="demo-tools">Generate<br/>Modify<br/>Explore</span></div>}
+        {project.art === "scene" && <div className="scene-art"><div className="scene-preview"><Video size={32} strokeWidth={1.5}/><span>Infographic scenes</span><div className="scene-shapes"><i/><i/><i/></div></div><div className="scene-timeline"><span>SCENE 01</span><div><i/><i/><i/></div><small>00:08</small></div></div>}
+        {project.art === "translate" && <div className="translate-art"><span className="translate-kicker">DEUTSCH ↔ ENGLISH</span><strong>lernen <span>→</span> learn</strong><p>verb · to acquire knowledge</p><div><span>Meaning</span><span>Grammar</span><span>Examples</span></div></div>}
+        {project.art === "dragonlume" && <div className="dragonlume-art"><span>🐲</span><b>DragonLume</b><small>3D GAME · IN DEVELOPMENT</small></div>}
         {project.art === "snake" && <div className="snake-demo"><div className="snake-board">{Array.from({length: 70}, (_, i) => <span key={i} className={[10,11,12,22,32,42,43,44,45].includes(i) ? "snake-bit" : i === 52 ? "snake-food" : ""}/>)}</div><div className="snake-score">SCORE <strong>024</strong><small>MODEL: DQN</small><span className="score-line"/></div></div>}
         {project.art === "research" && <div className="research-art"><div className="radar radar-1"/><div className="radar radar-2"/><ScanEye size={44}/><span className="car-icon">🚘</span><span className="sensor-label">OBJECT DETECTED</span></div>}
         {project.art === "study" && <div className="study-art"><span>My workspace</span><div className="study-metrics"><b>04<small>Learning paths</small></b><b>12<small>Tasks complete</small></b><b>85%<small>Progress</small></b></div><div className="study-bars"><i/><i/><i/></div></div>}
@@ -190,18 +223,19 @@ function IconLink({ href, children, primary = false }: { href: string; children:
 }
 
 function FeaturedCard({ project, index }: { project: Project; index: number }) {
-  const Icon = [Rocket, BrainCircuit, ScanEye, GraduationCap][index];
+  const Icon = [Rocket, Video, Languages, BrainCircuit, ScanEye, GraduationCap, Gamepad2][index];
   return (
     <article className={"featured-card tone-" + project.style}>
-      <div className="featured-category"><span className="category-icon"><Icon size={18}/></span><span>{["AI + SOFTWARE ENGINEERING", "ALGORITHMS + AI", "RESEARCH + SYSTEMS", "EDTECH + PRODUCT"][index]}</span></div>
+      <div className="featured-category"><span className="category-icon"><Icon size={18}/></span><span>{["AI + SOFTWARE ENGINEERING", "INFOGRAPHICS + VIDEO", "EDTECH + LANGUAGES", "ALGORITHMS + AI", "RESEARCH + SYSTEMS", "EDTECH + PRODUCT", "GAME DEVELOPMENT"][index]}</span></div>
       <h3>{project.title}</h3>
       <p className="project-subtitle">{project.subtitle}</p>
+      {project.status && <span className="project-status">{project.status}</span>}
       <ProjectArt project={project}/>
       <p className="featured-description">{project.description}</p>
       <div className="tech-tags">{project.tech.map(t => <span key={t}>{t}</span>)}</div>
       <div className="project-actions">
         {project.demo && <IconLink href={project.demo} primary>Live Demo</IconLink>}
-        {project.details && <IconLink href={project.details} primary>Project details</IconLink>}
+        {project.details && <IconLink href={project.details} primary>Research experience</IconLink>}
         {project.github && <IconLink href={project.github} primary={!project.demo}>GitHub</IconLink>}
       </div>
     </article>
@@ -214,6 +248,7 @@ function MiniCard({ project }: { project: Project }) {
       <ProjectArt project={project}/>
       <div className="mini-content">
         <h3>{project.title}</h3>
+        {project.status && <span className="mini-status">{project.status}</span>}
         <p>{project.subtitle}</p>
         <div className="mini-bottom">
           <div className="mini-tags">{project.tech.slice(0, 3).map(t => <span key={t}>{t}</span>)}</div>
@@ -250,12 +285,13 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero site-container" aria-labelledby="hero-title">
+      <section className="hero-wrapper" id="about" aria-labelledby="hero-title">
+        <div className="hero site-container">
         <div className="hero-copy">
           <div className="eyebrow"><span className="pulse-dot"/> BUILD · LEARN · IMPROVE</div>
           <h1 id="hero-title">Hi, I&apos;m <span>Abdullah Al Forkan</span></h1>
           <p className="hero-role">Software Developer <span>·</span> AI Enthusiast <span>·</span> Game Developer</p>
-          <p className="hero-desc">Electronic Engineering student building useful software, AI-powered experiences, and interactive products. I enjoy turning ambitious ideas into practical technology.</p>
+          <p className="hero-desc">I'm an Electronic Engineering student at Hochschule Hamm-Lippstadt, Germany. I build practical software, visual AI tools, learning apps and games — bringing engineering research and creative ideas together.</p>
           <div className="hero-links">
             <a href="https://github.com/Forkan01" target="_blank" rel="noopener noreferrer"><Github size={17}/> GitHub</a>
             <a href="https://www.linkedin.com/in/forkan02/" target="_blank" rel="noopener noreferrer"><Linkedin size={17}/> LinkedIn</a>
@@ -267,10 +303,16 @@ export default function Home() {
           <span className="hero-spark spark-1">✦</span><span className="hero-spark spark-2">✧</span><span className="hero-spark spark-3">+</span>
           <div className="hero-photo-wrap">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={profileFallback ? "https://avatars.githubusercontent.com/u/72549235?v=4" : "/profile/abdullah.png"} onError={() => setProfileFallback(true)} alt="Abdullah Al Forkan" className={profileFallback ? "hero-photo hero-photo-avatar" : "hero-photo"}/>
+            <img src={profileFallback ? "https://avatars.githubusercontent.com/u/72549235?v=4" : "/CVpic.png"} onError={() => setProfileFallback(true)} alt="Abdullah Al Forkan" className={profileFallback ? "hero-photo hero-photo-avatar" : "hero-photo"}/>
           </div>
           <div className="hero-sticker sticker-one"><Code2 size={18}/> Software</div>
           <div className="hero-sticker sticker-two"><BrainCircuit size={17}/> AI &amp; research</div>
+        </div>
+        </div>
+        <div className="site-container hero-highlights" aria-label="About me at a glance">
+          <div className="hero-fact"><span className="hero-fact-icon"><GraduationCap size={19}/></span><div><strong>Electronic Engineering</strong><span>B.Sc. · Hochschule Hamm-Lippstadt</span></div></div>
+          <div className="hero-fact"><span className="hero-fact-icon"><ScanEye size={19}/></span><div><strong>Research background</strong><span>GAIA-X · Autonomous driving · ROS2</span></div></div>
+          <div className="hero-fact"><span className="hero-fact-icon"><Code2 size={19}/></span><div><strong>Building across disciplines</strong><span>Software · AI · Learning · Games</span></div></div>
         </div>
       </section>
 
@@ -278,7 +320,7 @@ export default function Home() {
         <div className="site-container">
           <div className="section-heading featured-heading">
             <div><span className="section-label">PROJECTS</span><h2 id="featured-title">Featured <em>Projects</em></h2>
-              <p>A selection of my most relevant work across software engineering, AI, autonomous systems and learning products.</p></div>
+              <p>Featured projects in software, AI, video creation, research, learning and game development.</p></div>
             <div className="heading-scribble"><span>Different projects.<br/>One passion.<br/>Building useful things.</span><ArrowRight size={27}/></div>
           </div>
           <div className="featured-grid">{featured.map((p,i) => <FeaturedCard key={p.title} project={p} index={i}/>)}</div>
@@ -288,7 +330,7 @@ export default function Home() {
       <section className="section more-section" aria-labelledby="more-title">
         <div className="site-container">
           <div className="more-heading">
-            <div className="more-title-wrap"><span className="four-squares"><i/><i/><i/><i/></span><div><h2 id="more-title">More <em>Projects</em></h2><p>Apps, games, research and engineering projects I&apos;ve worked on.</p></div></div>
+            <div className="more-title-wrap"><span className="four-squares"><i/><i/><i/><i/></span><div><h2 id="more-title">More <em>Projects</em></h2><p>More apps, prototypes, games and engineering work.</p></div></div>
             <div className="filter-list" role="group" aria-label="Filter projects by category">{filters.map(f => <button key={f} type="button" aria-pressed={filter === f} className={filter === f ? "filter-chip active" : "filter-chip"} onClick={() => setFilter(f)}>{f}</button>)}</div>
           </div>
           {visibleProjects.length ? <div className="more-grid">{visibleProjects.map(p => <MiniCard key={p.title} project={p}/>)}</div> : <p className="empty-projects">No projects in this category yet.</p>}
@@ -303,26 +345,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section about-section" id="about" aria-labelledby="about-title">
-        <div className="site-container about-grid">
-          <div><span className="section-label">ABOUT ME</span><h2 id="about-title">More than <em>just code.</em></h2>
-            <p>I'm an Electronic Engineering student at Hochschule Hamm-Lippstadt in Germany. I enjoy moving between software engineering, AI, robotics and games — learning how systems work and building things people can actually use.</p>
-            <p>From university research involving autonomous driving to independent apps and experiments like DOT AI, my motivation is the same: curiosity, practical problem-solving and continuous improvement.</p>
-            <div className="about-links"><a href="https://github.com/Forkan01" target="_blank" rel="noopener noreferrer">See my work <ArrowUpRight size={16}/></a><a href="#contact">Get in touch <ChevronRight size={16}/></a></div>
-          </div>
-          <div className="about-highlights">
-            <div><span className="highlight-icon"><GraduationCap size={23}/></span><div><strong>B.Sc. Electronic Engineering</strong><span>Hochschule Hamm-Lippstadt · Germany</span></div></div>
-            <div><span className="highlight-icon"><ScanEye size={23}/></span><div><strong>Autonomous systems research</strong><span>GAIA-X research · CARLA · ROS / ROS2</span></div></div>
-            <div><span className="highlight-icon"><Sparkles size={23}/></span><div><strong>Creative software &amp; learning</strong><span>AI applications · Mobile apps · Games</span></div></div>
-            <div><span className="highlight-icon"><CircleDot size={23}/></span><div><strong>Based in Germany</strong><span>Open to software and engineering opportunities</span></div></div>
-          </div>
-        </div>
-      </section>
-
       <section className="section experience-section" id="experience" aria-labelledby="experience-title">
         <div className="site-container"><div className="section-heading"><div><span className="section-label">BACKGROUND</span><h2 id="experience-title">Education &amp; <em>Experience</em></h2><p>Research-driven engineering with hands-on software projects.</p></div></div>
           <div className="experience-grid">
-            <article className="experience-card"><span className="experience-icon"><BriefcaseBusiness size={23}/></span><div><span className="experience-date">JUN 2024 — JUN 2025</span><h3>Student Research Assistant</h3><strong>Hochschule Hamm-Lippstadt · GAIA-X / Autonomous Driving</strong><p>Worked with Python, C/C++, SQL, sensor and geodata, simulation workflows and autonomous-driving technologies including CARLA and ROS / ROS2.</p></div></article>
+            <article className="experience-card" id="research"><span className="experience-icon"><BriefcaseBusiness size={23}/></span><div><span className="experience-date">JUN 2024 — JUN 2025</span><h3>Student Research Assistant</h3><strong>Hochschule Hamm-Lippstadt · GAIA-X / Autonomous Driving</strong><p>Worked with Python, C/C++, SQL, sensor and geodata, simulation workflows and autonomous-driving technologies including CARLA and ROS / ROS2.</p></div></article>
             <article className="experience-card"><span className="experience-icon"><GraduationCap size={23}/></span><div><span className="experience-date">BACHELOR'S DEGREE</span><h3>Electronic Engineering</h3><strong>Hochschule Hamm-Lippstadt, Germany</strong><p>Engineering foundation across programming, embedded systems, signal processing and applied systems development.</p></div></article>
           </div>
         </div>
