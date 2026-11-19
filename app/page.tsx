@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Check,
   ChevronRight, CircleDot, Code2, Cpu, ExternalLink, FileText, Github,
@@ -267,6 +267,14 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileFallback, setProfileFallback] = useState(false);
   const visibleProjects = moreProjects.filter(p => filter === "All" || p.categories.includes(filter));
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [menuOpen]);
   const navLinks = [
     ["About", "#about"], ["Projects", "#projects"], ["Skills", "#skills"],
     ["Experience", "#experience"], ["Contact", "#contact"],
@@ -277,17 +285,17 @@ export default function Home() {
       <header className="site-header">
         <div className="site-container header-inner">
           <a className="logo" href="#home" aria-label="Abdullah Al Forkan homepage"><span className="logo-symbol">AF<span>.</span></span><span className="logo-name">Abdullah Al Forkan</span></a>
-          <nav className={menuOpen ? "site-nav nav-open" : "site-nav"} aria-label="Main navigation">
+          <nav id="primary-navigation" className={menuOpen ? "site-nav nav-open" : "site-nav"} aria-label="Main navigation">
             {navLinks.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
           </nav>
           <a className="nav-cta" href="mailto:Abdullah-al.forkan@stud.hshl.de?subject=Portfolio%20inquiry">Let&apos;s connect <ArrowUpRight size={16}/></a>
-          <button className="mobile-menu-button" type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}>{menuOpen ? <X size={23}/> : <Menu size={23}/>}</button>
+          <button className="mobile-menu-button" type="button" aria-controls="primary-navigation" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}>{menuOpen ? <X size={23}/> : <Menu size={23}/>}</button>
         </div>
       </header>
 
       <section className="hero-wrapper" id="about" aria-labelledby="hero-title">
         <div className="hero site-container">
-        <div className="hero-copy">
+          <div className="hero-copy">
           <div className="eyebrow"><span className="pulse-dot"/> BUILD · LEARN · IMPROVE</div>
           <h1 id="hero-title">Hi, I&apos;m <span>Abdullah Al Forkan</span></h1>
           <p className="hero-role">Software Developer <span>·</span> AI Enthusiast <span>·</span> Game Developer</p>
