@@ -59,3 +59,28 @@ test("desktop gallery is four columns and hero name stays printable", () => {
   assert.match(css, /featured-grid.*more-grid.*grid-template-columns: repeat\(4,minmax\(0,1fr\)\)/s);
   assert.match(css, /@media print[\s\S]*?\.hero h1 span/);
 });
+
+
+test("verified GitHub links are attached to the corresponding featured project", () => {
+  const matches = [
+    ["DOT AI", "https://github.com/Forkan01/dot-ai", true],
+    ["Scene Studio", "https://github.com/Forkan01/SceneStudio", true],
+    ["LearnTranslate", "https://github.com/Forkan01/learntranslate", false],
+    ["Deep Reinforcement Learning for Gaming", "https://github.com/Forkan01/Automatic-Game-Playing-with-DL--Autonomous-Sys.-B", false],
+    ["Autonomous Driving Research", "https://github.com/Forkan01/HSHL_Research", false],
+    ["DragonLume", "https://github.com/Forkan01/Dragonlume", true],
+  ];
+  for (const [title, url, privateRepo] of matches) {
+    const entry = features[1].split(/(?=^\s+title:\s+")/m).find(s => s.startsWith("    title: " + JSON.stringify(title)));
+    assert.ok(entry, "Missing project: " + title);
+    assert.ok(entry.includes("github: " + JSON.stringify(url)), "Missing GitHub URL for " + title);
+    assert.equal(entry.includes("githubPrivate: true"), privateRepo, "Incorrect visibility for " + title);
+  }
+  assert.match(page, /Private GitHub repositories can only be viewed by authorized accounts/);
+});
+
+test("More Projects show labeled links rather than icon-only actions", () => {
+  assert.match(page, /<ExternalLink size=\{14\}\/><span>Demo<\/span>/);
+  assert.match(page, /<Github size=\{14\}\/><span>GitHub<\/span>/);
+  assert.match(css, /\.mini-links a\s*\{/);
+});

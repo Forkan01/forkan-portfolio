@@ -5,7 +5,7 @@ import {
   ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Check,
   ChevronRight, CircleDot, Code2, Cpu, ExternalLink, FileText, Github,
   GraduationCap, Layers3, Linkedin, Mail, Menu, MonitorCog, Rocket,
-  ScanEye, ServerCog, Smartphone, Sparkles, Video, Languages, Gamepad2, X,
+  ScanEye, ServerCog, Smartphone, Sparkles, Video, Languages, Gamepad2, LockKeyhole, X,
 } from "lucide-react";
 
 type Category = "Web Apps" | "Games" | "AI / ML" | "Systems" | "Embedded" | "Research" | "Mobile Apps";
@@ -22,6 +22,7 @@ type Project = {
   image?: string;
   demo?: string;
   github?: string;
+  githubPrivate?: boolean;
   details?: string;
   feature?: boolean;
 };
@@ -35,6 +36,7 @@ const featured: Project[] = [
     categories: ["Web Apps", "AI / ML"],
     style: "blue", art: "dots", status: "In development",
     github: "https://github.com/Forkan01/dot-ai",
+    githubPrivate: true,
     feature: true,
   },
   {
@@ -45,6 +47,7 @@ const featured: Project[] = [
     categories: ["Web Apps"],
     style: "purple", art: "scene",
     github: "https://github.com/Forkan01/SceneStudio",
+    githubPrivate: true,
     feature: true,
   },
   {
@@ -74,6 +77,7 @@ const featured: Project[] = [
     tech: ["Python", "C++", "CARLA", "ROS2"],
     categories: ["Research", "Systems", "AI / ML"],
     style: "green", art: "research",
+    github: "https://github.com/Forkan01/HSHL_Research",
     details: "#research",
     feature: true,
   },
@@ -94,6 +98,8 @@ const featured: Project[] = [
     tech: ["3D Game", "Game Design", "Godot", "Characters"],
     categories: ["Games"],
     style: "purple", art: "dragonlume", status: "In development",
+    github: "https://github.com/Forkan01/Dragonlume",
+    githubPrivate: true,
     feature: true,
   },
 ];
@@ -212,12 +218,18 @@ function ProjectArt({ project }: { project: Project }) {
   );
 }
 
-function IconLink({ href, children, primary = false }: { href: string; children: React.ReactNode; primary?: boolean }) {
+function IconLink({ href, children, primary = false, privateRepo = false }: { href: string; children: React.ReactNode; primary?: boolean; privateRepo?: boolean }) {
   const external = href.startsWith("http");
   return (
-    <a href={href} className={primary ? "project-link project-link-primary" : "project-link"}
-      target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
-      {children} {external ? <ArrowUpRight size={15} /> : <ArrowRight size={15} />}
+    <a
+      href={href}
+      className={"project-link" + (primary ? " project-link-primary" : "") + (privateRepo ? " project-link-private" : "")}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      title={privateRepo ? "Private GitHub repository — access requires permission" : undefined}
+    >
+      {children} {privateRepo && <LockKeyhole size={13} aria-label="Private repository" />}
+      {external ? <ArrowUpRight size={15} /> : <ArrowRight size={15} />}
     </a>
   );
 }
@@ -235,8 +247,8 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
       <div className="tech-tags">{project.tech.map(t => <span key={t}>{t}</span>)}</div>
       <div className="project-actions">
         {project.demo && <IconLink href={project.demo} primary>Live Demo</IconLink>}
-        {project.details && <IconLink href={project.details} primary>Research experience</IconLink>}
-        {project.github && <IconLink href={project.github} primary={!project.demo}>GitHub</IconLink>}
+        {project.details && <IconLink href={project.details} primary>Experience</IconLink>}
+        {project.github && <IconLink href={project.github} primary={!project.demo && !project.githubPrivate} privateRepo={project.githubPrivate}><Github size={15} /> {project.githubPrivate ? "GitHub (private)" : "GitHub"}</IconLink>}
       </div>
     </article>
   );
@@ -253,8 +265,8 @@ function MiniCard({ project }: { project: Project }) {
         <div className="mini-bottom">
           <div className="mini-tags">{project.tech.slice(0, 3).map(t => <span key={t}>{t}</span>)}</div>
           <div className="mini-links">
-            {project.demo && <a href={project.demo} aria-label={"Open " + project.title + " demo"} target="_blank" rel="noopener noreferrer"><ExternalLink size={17}/></a>}
-            {project.github && <a href={project.github} aria-label={"Open " + project.title + " GitHub repository"} target="_blank" rel="noopener noreferrer"><Github size={18}/></a>}
+            {project.demo && <a href={project.demo} aria-label={"Open " + project.title + " live demo"} target="_blank" rel="noopener noreferrer"><ExternalLink size={14}/><span>Demo</span></a>}
+            {project.github && <a href={project.github} aria-label={"Open " + project.title + " GitHub repository"} target="_blank" rel="noopener noreferrer"><Github size={14}/><span>GitHub</span></a>}
           </div>
         </div>
       </div>
@@ -332,6 +344,7 @@ export default function Home() {
             <div className="heading-scribble"><span>Different projects.<br/>One passion.<br/>Building useful things.</span><ArrowRight size={27}/></div>
           </div>
           <div className="featured-grid">{featured.map((p,i) => <FeaturedCard key={p.title} project={p} index={i}/>)}</div>
+          <p className="repo-visibility-note"><LockKeyhole size={13} /> Private GitHub repositories can only be viewed by authorized accounts.</p>
         </div>
       </section>
 
