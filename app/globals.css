@@ -261,38 +261,53 @@ h2 em { font-style: normal; color: #3268ec; }
 }
 
 
-/* Portrait framing: a little extra room around the head and the AI badge
-   overlapping the top edge, without covering the eyes or face. */
+/* Portrait and surrounding circles: 5% smaller together.
+   The AI & research badge uses its original upper-right position. */
 @media (min-width: 781px) {
   .hero-visual .hero-photo-wrap {
-    width: 338px;
-    height: 350px;
+    width: 322px;
+    height: 333px;
     border-radius: 50%;
   }
   .hero-visual .hero-photo:not(.hero-photo-avatar) {
-    width: 338px;
-    height: 350px;
+    width: 322px;
+    height: 333px;
     object-fit: cover;
     object-position: center 45%;
     transform: none;
   }
   .hero-visual .hero-orbit-outer {
-    width: 352px;
-    height: 352px;
+    width: 335px;
+    height: 335px;
+  }
+  .hero-visual .hero-orbit-inner {
+    width: 263px;
+    height: 263px;
+  }
+  .hero-visual::before {
+    width: 333px;
+    height: 333px;
   }
 }
-.hero-visual .sticker-two {
-  top: 2px;
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%) rotate(2deg);
-  z-index: 8;
-  padding: 10px 16px;
-  box-shadow: 0 7px 20px rgba(39, 68, 125, .13);
-}
 @media (max-width: 780px) {
-  .hero-visual .sticker-two {
-    top: 0;
-    padding: 8px 12px;
+  .hero-visual .hero-photo-wrap {
+    width: 245px;
+    height: 252px;
+  }
+  .hero-visual .hero-photo:not(.hero-photo-avatar) {
+    width: 245px;
+    height: 252px;
+  }
+  .hero-visual .hero-orbit-outer {
+    width: 247px;
+    height: 247px;
+  }
+  .hero-visual .hero-orbit-inner {
+    width: 223px;
+    height: 223px;
+  }
+  .hero-visual::before {
+    width: 266px;
+    height: 266px;
   }
 }
