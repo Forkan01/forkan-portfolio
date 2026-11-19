@@ -247,7 +247,7 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
       <div className="tech-tags">{project.tech.map(t => <span key={t}>{t}</span>)}</div>
       <div className="project-actions">
         {project.demo && <IconLink href={project.demo} primary>Live Demo</IconLink>}
-        {project.details && <IconLink href={project.details} primary>Research experience</IconLink>}
+        {project.details && <IconLink href={project.details} primary>Experience</IconLink>}
         {project.github && <IconLink href={project.github} primary={!project.demo && !project.githubPrivate} privateRepo={project.githubPrivate}><Github size={15} /> {project.githubPrivate ? "GitHub (private)" : "GitHub"}</IconLink>}
       </div>
     </article>
