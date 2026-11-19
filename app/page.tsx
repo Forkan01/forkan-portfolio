@@ -138,7 +138,7 @@ const moreProjects: Project[] = [
     github: "https://github.com/Forkan01/Autonomous-Systems-B-Lab_Group-D",
   },
   {
-    title: "Brain Boost", subtitle: "AI puzzle app prototype",
+    title: "Brain Boost Prototype", subtitle: "AI puzzle app prototype",
     description: "An interactive puzzle and learning-oriented app concept.",
     tech: ["App Prototype", "AI", "Learning"],
     categories: ["Web Apps", "AI / ML"],
@@ -146,7 +146,7 @@ const moreProjects: Project[] = [
     demo: "https://brainboost.lovable.app",
   },
   {
-    title: "Solo Leveling App", subtitle: "Personal goals and challenges",
+    title: "Solo Leveling Prototype", subtitle: "Personal goals and challenges",
     description: "A gamified daily-goal app prototype.",
     tech: ["App Prototype", "Gamification"],
     categories: ["Web Apps", "Games"],
