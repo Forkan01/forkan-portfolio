@@ -1,57 +1,62 @@
-# Abdullah Al Forkan — Portfolio
+# Abdullah Al Forkan — Personal Portfolio
 
-A responsive personal portfolio in a **light infographic / Google-inspired** visual style.
+A light, infographic-style, responsive personal portfolio built with Next.js, React and TypeScript.
 
-## Preview and development
+## Run locally
 
-\`\`\`bash
+Requires Node.js 22 or later.
+
+```bash
 npm install
+npm test
+npm run typecheck
+npm run build
 npm run dev
-\`\`\`
+```
 
-Open the forwarded **3000** port in GitHub Codespaces.
+Open http://localhost:3000.
 
-## Layout
+The site deliberately avoids API keys, databases and live generation calls.
 
-- Compact hero with photo, social links, and a light background
-- Featured Projects: four cards per desktop row, two on tablets, one on phones
-- More Projects: searchable-by-category filter buttons (client-side)
-- Skills, About, Education & Experience, and Contact
+## Page structure
 
-All project links point to publicly identified projects or live prototypes. The planned Linux System Monitor & Auto-Healer is **not** represented as completed work.
+1. **About / Hero** — introduction, profile picture, social links and quick facts
+2. **Featured Projects** — seven selected projects, four per row on most laptop/desktop screens
+3. **More Projects** — compact category-filtered gallery
+4. **Skills & Technologies**
+5. **Education & Experience** — includes a research anchor for autonomous driving
+6. **Contact & footer**
 
-## Local images
+The **About** navbar link returns to the hero rather than jumping below projects. Mobile navigation closes on link selection or Escape.
 
-The original Codespaces project has locally uploaded images not yet committed to \`main\`. The design expects these optional paths:
+## Featured projects
 
-\`\`\`text
-public/profile/abdullah.png
-public/projects/studly.png
-public/projects/note-taking.png
-public/projects/todo-flutter.png
-public/projects/dragon-slayer.png
-\`\`\`
+1. DOT AI — in development
+2. Scene Studio — JSON-powered infographic/video editor
+3. LearnTranslate — in development
+4. Deep Reinforcement Learning for Gaming — *Snake AI local*
+5. Autonomous Driving Research — links to research experience
+6. Studly Prototype — live prototype link
+7. DragonLume — original game in development (no public source or demo link claimed)
 
-Optional featured screenshots:
+Descriptions indicate development/prototype status where relevant. Links point to existing GitHub repositories or published prototypes.
 
-\`\`\`text
-public/projects/dot-ai.png
-public/projects/snake-ai.png
-public/projects/autonomous-driving.png
-\`\`\`
+## Profile picture
 
-Missing project images show built-in *illustrative previews* rather than broken image boxes. Missing portrait falls back to the public GitHub avatar.
+The uploaded `CVpic.png` has been copied to `public/CVpic.png` so Next.js can serve it at `/CVpic.png`. The original repository-root copy is retained. If the picture fails to load, the hero falls back to the public GitHub avatar.
 
-For professional applications, replace generated mockup screenshots with real app captures whenever available.
+## Project artwork
 
-## Important: original local Codespace
+The design uses hand-built CSS/HTML illustrations where project screenshots have not been committed. This deliberately avoids broken image icons or pretending illustrations are exact product screenshots.
 
-At the time this redesign was prepared, the remote \`main\` branch contained **only a README**. Do not discard the original Codespace's uncommitted files or locally uploaded image assets. This design is committed on a **separate review branch**.
+To replace a card's illustrative art with a real screenshot, put the image under `public/projects/` and add `image: "/projects/name.png"` to the corresponding project object in `app/page.tsx`.
 
-To preview this new version without disturbing your old Codespace, create a **new Codespace on the \`design/light-infographic-portfolio\` branch** and run \`npm install && npm run dev\`.
+## Verification
 
-To integrate your local images later, copy or commit them from the original Codespace into this branch.
+Run `npm test` to verify requested featured-project order, anchored navigation, photo path, filter UI and local image references. Run `npm run typecheck` and `npm run build` for full TypeScript and production checks.
 
-## Contact links
+No deployment or GitHub Actions workflow is required to preview locally.
 
-The contact email is currently the user's HSHL student address. Update it if a different professional email should be used. There is no broken Download CV button; add a real PDF before enabling a download action.
+## Contact
+
+Portfolio email uses the HSHL student address. Update the links if you prefer another contact email. No placeholder Download CV button is presented; add a PDF before enabling that action.
