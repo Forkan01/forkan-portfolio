@@ -311,3 +311,60 @@ h2 em { font-style: normal; color: #3268ec; }
     height: 266px;
   }
 }
+
+
+/* Clear GitHub and demo actions, with honest private-repository labels. */
+.project-link-private {
+  color: #6b5a86;
+  background: #f8f4fd;
+  border-color: #e4daee;
+}
+.project-link-private:hover { background: #f1eafb; }
+.project-link-private svg { flex-shrink: 0; }
+.repo-visibility-note {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin: 11px 2px 0;
+  color: #718095;
+  font-size: 10px;
+}
+.repo-visibility-note svg { flex-shrink: 0; }
+.mini-bottom {
+  flex-direction: column;
+  align-items: stretch;
+}
+.mini-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  margin-top: 3px;
+}
+.mini-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid #e3eaf4;
+  border-radius: 7px;
+  background: #f8faff;
+  color: #345277;
+  padding: 6px 8px;
+  font-size: 10px;
+  font-weight: 730;
+  min-height: 28px;
+}
+.mini-links a:hover {
+  border-color: #9ebcf2;
+  color: #1b5fce;
+  background: #edf4ff;
+}
+@media (max-width: 540px) {
+  .repo-visibility-note {
+    justify-content: flex-start;
+    font-size: 9px;
+  }
+  .mini-links a { padding: 5px 6px; font-size: 9px; }
+}
