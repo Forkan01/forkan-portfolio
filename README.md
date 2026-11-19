@@ -6,13 +6,13 @@ A light, infographic-style, responsive personal portfolio built with Next.js, Re
 
 Requires Node.js 22 or later.
 
-\`\`\`bash
+```bash
 npm install
 npm test
 npm run typecheck
 npm run build
 npm run dev
-\`\`\`
+```
 
 Open http://localhost:3000.
 
@@ -43,17 +43,17 @@ Descriptions indicate development/prototype status where relevant. Links point t
 
 ## Profile picture
 
-The uploaded \`CVpic.png\` has been copied to \`public/CVpic.png\` so Next.js can serve it at \`/CVpic.png\`. The original repository-root copy is retained. If the picture fails to load, the hero falls back to the public GitHub avatar.
+The uploaded `CVpic.png` has been copied to `public/CVpic.png` so Next.js can serve it at `/CVpic.png`. The original repository-root copy is retained. If the picture fails to load, the hero falls back to the public GitHub avatar.
 
 ## Project artwork
 
 The design uses hand-built CSS/HTML illustrations where project screenshots have not been committed. This deliberately avoids broken image icons or pretending illustrations are exact product screenshots.
 
-To replace a card's illustrative art with a real screenshot, put the image under \`public/projects/\` and add \`image: "/projects/name.png"\` to the corresponding project object in \`app/page.tsx\`.
+To replace a card's illustrative art with a real screenshot, put the image under `public/projects/` and add `image: "/projects/name.png"` to the corresponding project object in `app/page.tsx`.
 
 ## Verification
 
-Run \`npm test\` to verify requested featured-project order, anchored navigation, photo path, filter UI and local image references. Run \`npm run typecheck\` and \`npm run build\` for full TypeScript and production checks.
+Run `npm test` to verify requested featured-project order, anchored navigation, photo path, filter UI and local image references. Run `npm run typecheck` and `npm run build` for full TypeScript and production checks.
 
 No deployment or GitHub Actions workflow is required to preview locally.
 
