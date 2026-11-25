@@ -30,8 +30,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-nav { display: flex; align-items: center; gap: 30px; }
 .site-nav a { font-size: 13px; font-weight: 650; color: #52627a; transition: color .2s; }
 .site-nav a:hover { color: var(--blue); }
-.nav-cta { display: inline-flex; align-items: center; gap: 9px; background: #2367ed; border: 1px solid #2367ed; border-radius: 12px; color: white; padding: 11px 15px; font-weight: 720; font-size: 13px; box-shadow: 0 5px 12px #2567ed22; }
-.nav-cta:hover { background: #1556d5; }
 .mobile-menu-button { display: none; border: 1px solid var(--stroke); border-radius: 10px; padding: 8px; color: var(--ink); background: white; cursor: pointer; }
 .hero { min-height: 420px; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(340px,.85fr); align-items: center; gap: 25px; padding-block: 38px 20px; position: relative; }
 .hero-copy { position: relative; z-index: 2; max-width: 760px; }
@@ -129,8 +127,8 @@ h2 em { font-style: normal; color: #3268ec; }
 .contact-section { background: linear-gradient(120deg,#ecf3ff,#faf5ff 75%); }.contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }.contact-section p { color: #61728b; font-size: 13px; max-width: 700px; line-height: 1.65; }.contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; white-space: nowrap; color: white; background: #2065df; padding: 15px 19px; border-radius: 12px; font-size: 13px; font-weight: 800; box-shadow: 0 6px 15px #286fe629; }.contact-button:hover { background: #1452bc; }
 .site-footer { background: white; border-top: 1px solid var(--stroke); padding: 25px 0; }.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 18px; color: #7b8797; font-size: 12px; }.footer-inner strong { color: #1a2f4d; font-size: 17px; margin-right: 9px; }.footer-spark { color: #356fee; }.footer-inner div { display: flex; gap: 16px; color: #4d6b92; }.footer-inner div a:hover { color: #2367ed; }
 @media (max-width: 1150px) { .site-nav { gap: 17px; }.featured-grid, .more-grid, .skills-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.featured-card .project-art { height: 175px; }.more-heading { align-items: flex-start; flex-direction: column; }.filter-list { justify-content: flex-start; } }
-@media (max-width: 780px) { .site-header { height: 67px; }.site-container { width: min(100% - 36px,1390px); }.logo-name { display: none; }.site-nav { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 20px; background: white; border-bottom: 1px solid var(--stroke); box-shadow: 0 10px 30px #142c4b12; flex-direction: column; align-items: stretch; gap: 17px; }.site-nav.nav-open { display: flex; }.mobile-menu-button { display: inline-grid; }.nav-cta { margin-left: auto; padding: 10px 12px; }.hero { grid-template-columns: 1fr; padding-block: 42px 22px; gap: 2px; }.hero-copy { max-width: 100%; }.hero h1 { font-size: clamp(39px,7vw,62px); }.hero-visual { height: 290px; width: 100%; }.hero-photo-wrap { width: 258px; height: 265px; }.hero-photo { width: 258px; height: 265px; }.hero-orbit-outer { width: 260px; height: 260px; }.hero-orbit-inner { width: 235px; height: 235px; }.hero-visual:before { width: 280px; height: 280px; }.hero-sticker { font-size: 9px; }.sticker-one { left: 15%; }.sticker-two { right: 10%; }.heading-scribble { display: none; }.experience-grid { grid-template-columns: 1fr; }.section { padding-block: 36px; } }
-@media (max-width: 540px) { .site-container { width: calc(100% - 30px); }.nav-cta { font-size: 11px; }.hero h1 { font-size: clamp(36px,9.5vw,49px); }.hero-role { font-size: 14px; line-height: 1.6; }.hero-desc { font-size: 13px; }.hero-links a { padding: 10px 13px; }.hero-visual { margin-top: 10px; }.featured-grid,.more-grid,.skills-grid { grid-template-columns: 1fr; }.featured-card { padding: 16px; }.featured-card .project-art { height: 170px; }.section-heading h2 { font-size: 33px; }.more-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }.mini-card .project-art { height: 110px; }.mini-content { padding: 9px; }.mini-content h3 { font-size: 12px; }.mini-tags span { font-size: 8px; }.mini-links { gap: 5px; }.filter-list { overflow-x: auto; flex-wrap: nowrap; max-width: 100%; padding-bottom: 7px; justify-content: flex-start; }.filter-chip { white-space: nowrap; }.contact-inner { flex-direction: column; align-items: flex-start; }.contact-button { width: 100%; }.footer-inner { flex-direction: column; gap: 12px; text-align: center; } }
+@media (max-width: 780px) { .site-header { height: 67px; }.site-container { width: min(100% - 36px,1390px); }.logo-name { display: none; }.site-nav { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 20px; background: white; border-bottom: 1px solid var(--stroke); box-shadow: 0 10px 30px #142c4b12; flex-direction: column; align-items: stretch; gap: 17px; }.site-nav.nav-open { display: flex; }.mobile-menu-button { display: inline-grid; }.hero { grid-template-columns: 1fr; padding-block: 42px 22px; gap: 2px; }.hero-copy { max-width: 100%; }.hero h1 { font-size: clamp(39px,7vw,62px); }.hero-visual { height: 290px; width: 100%; }.hero-photo-wrap { width: 258px; height: 265px; }.hero-photo { width: 258px; height: 265px; }.hero-orbit-outer { width: 260px; height: 260px; }.hero-orbit-inner { width: 235px; height: 235px; }.hero-visual:before { width: 280px; height: 280px; }.hero-sticker { font-size: 9px; }.sticker-one { left: 15%; }.sticker-two { right: 10%; }.heading-scribble { display: none; }.experience-grid { grid-template-columns: 1fr; }.section { padding-block: 36px; } }
+@media (max-width: 540px) { .site-container { width: calc(100% - 30px); }.hero h1 { font-size: clamp(36px,9.5vw,49px); }.hero-role { font-size: 14px; line-height: 1.6; }.hero-desc { font-size: 13px; }.hero-links a { padding: 10px 13px; }.hero-visual { margin-top: 10px; }.featured-grid,.more-grid,.skills-grid { grid-template-columns: 1fr; }.featured-card { padding: 16px; }.featured-card .project-art { height: 170px; }.section-heading h2 { font-size: 33px; }.more-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }.mini-card .project-art { height: 110px; }.mini-content { padding: 9px; }.mini-content h3 { font-size: 12px; }.mini-tags span { font-size: 8px; }.mini-links { gap: 5px; }.filter-list { overflow-x: auto; flex-wrap: nowrap; max-width: 100%; padding-bottom: 7px; justify-content: flex-start; }.filter-chip { white-space: nowrap; }.contact-inner { flex-direction: column; align-items: flex-start; }.contact-button { width: 100%; }.footer-inner { flex-direction: column; gap: 12px; text-align: center; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
 
 
@@ -392,4 +390,45 @@ h2 em { font-style: normal; color: #3268ec; }
   .hero-visual::before { max-width: 100%; }
   .mini-content .mini-description { font-size: 10px; }
   .mini-tags { overflow-wrap: anywhere; }
+}
+
+
+/* Header scroll dial: isolated progress updates, with a keyboard-accessible return to top. */
+.scroll-dial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+  min-height: 46px;
+  min-width: 136px;
+  padding: 3px 5px;
+  border: 0;
+  border-radius: 12px;
+  color: #142239;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+.scroll-dial:hover { background: #edf4ff; }
+.scroll-dial:hover .scroll-dial-ring { background: #fff; }
+.scroll-dial-label { display: flex; flex-direction: column; gap: 4px; }
+.scroll-dial-label small { font-size: 10px; line-height: 1.1; font-weight: 650; color: #62728b; white-space: nowrap; }
+.scroll-dial-value { font-size: 13px; line-height: 1; font-weight: 800; font-variant-numeric: tabular-nums; color: #2868dc; }
+.scroll-dial-ring { width: 42px; height: 42px; display: grid; place-items: center; position: relative; border-radius: 50%; background: #f4f8ff; }
+.scroll-dial-track, .scroll-dial-fill { fill: none; stroke-width: 3; }
+.scroll-dial-track { stroke: #dce6f5; }
+.scroll-dial-fill { stroke: #2868dc; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; transition: stroke-dashoffset 120ms linear; }
+.scroll-dial-ring > svg:first-child { width: 100%; height: 100%; }
+.scroll-dial-arrow { position: absolute; inset: 0; margin: auto; color: #2868dc; }
+@media (max-width: 780px) {
+  .scroll-dial { margin-left: auto; min-width: 0; min-height: 44px; gap: 7px; }
+  .scroll-dial-label small { display: none; }
+  .scroll-dial-ring { width: 39px; height: 39px; }
+}
+@media (max-width: 360px) {
+  .header-inner { gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-dial-fill { transition: none; }
 }
