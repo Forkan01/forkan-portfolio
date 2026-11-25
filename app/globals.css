@@ -394,19 +394,14 @@ h2 em { font-style: normal; color: #3268ec; }
 
 
 /* Scroll-reactive particle sphere: fits the existing sticky header. */
-.particle-sphere-control { display: flex; align-items: center; justify-content: flex-end; gap: 3px; flex-shrink: 0; }
+.particle-sphere-control { display: flex; align-items: center; justify-content: flex-end; flex-shrink: 0; }
 .particle-sphere-button { display: grid; place-items: center; width: 62px; height: 62px; padding: 0; border: 0; border-radius: 50%; background: radial-gradient(circle,#eaf2ff 0%,#f5f8ff 55%,transparent 74%); cursor: pointer; transition: background .2s, transform .2s; }
 .particle-sphere-button:hover { background: #edf4ff; transform: scale(1.04); }
 .particle-sphere-canvas { display: block; width: 60px; height: 60px; }
-.particle-sphere-toggle { display: grid; place-items: center; width: 30px; height: 32px; padding: 0; border: 0; border-radius: 8px; color: #62728b; background: transparent; cursor: pointer; }
-.particle-sphere-toggle:hover { background: #edf4ff; color: #2868dc; }
 @media (max-width: 780px) {
-  .particle-sphere-control { margin-left: auto; gap: 0; }
+  .particle-sphere-control { margin-left: auto; }
   .particle-sphere-button { width: 54px; height: 54px; }
   .particle-sphere-canvas { width: 52px; height: 52px; }
-}
-@media (pointer: coarse) {
-  .particle-sphere-toggle { width: 44px; height: 44px; }
 }
 @media (max-width: 360px) { .header-inner { gap: 10px; } }
 @media (prefers-reduced-motion: reduce) {

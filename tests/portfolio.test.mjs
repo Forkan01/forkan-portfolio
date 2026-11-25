@@ -125,7 +125,9 @@ test("header uses an accessible scroll-reactive particle sphere", () => {
   const sphere = readFileSync(join(root,"app/particle-sphere.tsx"),"utf8");
   assert.match(page, /<ParticleSphere \/>/);
   assert.doesNotMatch(page, /<ScrollProgress|className="nav-cta"/);
-  for (const token of ["requestAnimationFrame","cancelAnimationFrame","ResizeObserver","prefers-reduced-motion","visibilitychange","Pause particle animation","Back to top","activeSectionIndex"]) assert.ok(sphere.includes(token), token);
+  for (const token of ["requestAnimationFrame","cancelAnimationFrame","ResizeObserver","prefers-reduced-motion","visibilitychange","Back to top","activeSectionIndex"]) assert.ok(sphere.includes(token), token);
+  assert.doesNotMatch(sphere, /particle-sphere-toggle|toggleAnimation|Pause particle animation/);
+  assert.doesNotMatch(css, /\.particle-sphere-toggle/);
   assert.match(css,/\.particle-sphere-canvas/);
   assert.doesNotMatch(css,/\.scroll-dial/);
 });

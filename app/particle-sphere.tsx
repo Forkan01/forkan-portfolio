@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Pause, Play } from "lucide-react";
+import { useEffect, useRef } from "react";
 import { SECTION_COLORS, createSpherePoints, createSphereEdges, scrollFraction, activeSectionIndex } from "./particle-sphere-utils.mjs";
 
 const POINTS = createSpherePoints(130);
@@ -11,10 +10,6 @@ const SIZE = 60;
 
 export default function ParticleSphere() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [paused, setPaused] = useState(false);
-  const [reduced, setReduced] = useState(false);
-  const pausedRef = useRef(false);
-  const refreshRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -61,7 +56,7 @@ export default function ParticleSphere() {
     function draw(time: number) {
       frame = null;
       if (document.hidden) return;
-      const animate = !motion.matches && !pausedRef.current;
+      const animate = !motion.matches;
       if (animate && lastPaint && time - lastPaint < 30) {
         requestDraw();
         return;
@@ -130,7 +125,7 @@ export default function ParticleSphere() {
     }
 
     function onMotionChange() {
-      setReduced(motion.matches);
+
       lastTime = 0;
       requestDraw();
     }
@@ -145,8 +140,7 @@ export default function ParticleSphere() {
       }
     }
 
-    refreshRef.current = () => { lastTime = 0; requestDraw(); };
-    setReduced(motion.matches);
+
     refresh();
     const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(refresh);
     observer?.observe(document.body);
@@ -156,7 +150,7 @@ export default function ParticleSphere() {
     document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
-      refreshRef.current = null;
+
       if (frame !== null) window.cancelAnimationFrame(frame);
       observer?.disconnect();
       window.removeEventListener("scroll", updateScroll);
@@ -166,14 +160,8 @@ export default function ParticleSphere() {
     };
   }, []);
 
-  function toggleAnimation() {
-    pausedRef.current = !pausedRef.current;
-    setPaused(pausedRef.current);
-    refreshRef.current?.();
-  }
-
   function backToTop() {
-    window.scrollTo({ top: 0, behavior: reduced || paused ? "instant" : "smooth" });
+    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }
 
   return (
@@ -181,13 +169,6 @@ export default function ParticleSphere() {
       <button className="particle-sphere-button" type="button" onClick={backToTop} aria-label="Back to top" title="Back to top">
         <canvas className="particle-sphere-canvas" ref={canvasRef} width={60} height={60} aria-hidden="true" />
       </button>
-      {!reduced && (
-        <button className="particle-sphere-toggle" type="button" onClick={toggleAnimation}
-          aria-label={paused ? "Resume particle animation" : "Pause particle animation"}
-          title={paused ? "Resume animation" : "Pause animation"}>
-          {paused ? <Play size={13} aria-hidden="true" /> : <Pause size={13} aria-hidden="true" />}
-        </button>
-      )}
     </div>
   );
 }
