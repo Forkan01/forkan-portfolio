@@ -45,8 +45,7 @@ const featured: Project[] = [
     tech: ["Next.js", "TypeScript", "JSON", "Video Export"],
     categories: ["Web Apps"],
     style: "purple", art: "scene",
-    github: "https://github.com/Forkan01/SceneStudio",
-    githubPrivate: true,
+    demo: "https://scene-studio-beige.vercel.app/",
   },
   {
     title: "LearnTranslate",

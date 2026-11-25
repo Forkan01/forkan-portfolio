@@ -32,7 +32,7 @@ The **About** navbar link returns to the hero rather than jumping below projects
 ## Featured projects
 
 1. DOT AI — in development
-2. Scene Studio — JSON-powered infographic/video editor
+2. Scene Studio — JSON-powered infographic/video editor ([Live Demo](https://scene-studio-beige.vercel.app/))
 3. LearnTranslate — in development
 4. Deep Reinforcement Learning for Gaming — *Snake AI local*
 5. Autonomous Driving Research — links to research experience

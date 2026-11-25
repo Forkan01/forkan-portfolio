@@ -65,7 +65,6 @@ test("desktop gallery is four columns and hero name stays printable", () => {
 test("verified GitHub links are attached to the corresponding featured project", () => {
   const matches = [
     ["DOT AI", "https://github.com/Forkan01/dot-ai", true],
-    ["Scene Studio", "https://github.com/Forkan01/SceneStudio", true],
     ["LearnTranslate", "https://github.com/Forkan01/learntranslate", false],
     ["Deep Reinforcement Learning for Gaming", "https://github.com/Forkan01/Automatic-Game-Playing-with-DL--Autonomous-Sys.-B", false],
     ["Autonomous Driving Research", "https://github.com/Forkan01/HSHL_Research", false],
@@ -130,4 +129,12 @@ test("header uses an accessible scroll-reactive particle sphere", () => {
   assert.doesNotMatch(css, /\.particle-sphere-toggle/);
   assert.match(css,/\.particle-sphere-canvas/);
   assert.doesNotMatch(css,/\.scroll-dial/);
+});
+
+
+test("Scene Studio links directly to its production website instead of a private repository", () => {
+  const scene = features[1].split(/(?=^\s+title:\s+")/m).find(s => s.startsWith('    title: "Scene Studio"'));
+  assert.ok(scene);
+  assert.ok(scene.includes('demo: "https://scene-studio-beige.vercel.app/"'));
+  assert.doesNotMatch(scene, /github:|githubPrivate:/);
 });
