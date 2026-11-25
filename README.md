@@ -21,7 +21,7 @@ The site deliberately avoids API keys, databases and live generation calls.
 ## Page structure
 
 1. **About / Hero** — introduction, profile picture, social links and quick facts
-2. **Featured Projects** — seven selected projects, four per row on most laptop/desktop screens
+2. **Featured Projects** — eight selected projects, four per row on most laptop/desktop screens
 3. **More Projects** — compact category-filtered gallery
 4. **Skills & Technologies**
 5. **Education & Experience** — includes a research anchor for autonomous driving
@@ -37,7 +37,8 @@ The **About** navbar link returns to the hero rather than jumping below projects
 4. Deep Reinforcement Learning for Gaming — *Snake AI local*
 5. Autonomous Driving Research — links to research experience
 6. Studly Prototype — live prototype link
-7. DragonLume — original game in development (no public source or demo link claimed)
+7. DragonLume — original game in development (private repository)
+8. PyDangeon — Godot 4 educational dungeon RPG with Python coding puzzles (private repository)
 
 Descriptions indicate development/prototype status where relevant. Links point to existing GitHub repositories or published prototypes.
 

@@ -11,7 +11,7 @@ const features = page.match(/const featured: Project\[\] = \[([\s\S]*?)\n\];/);
 assert.ok(features, "Featured projects array must be present");
 const featuredNames = [...features[1].matchAll(/^\s+title:\s+"([^"]+)"/gm)].map((match) => match[1]);
 
-test("all seven featured projects appear in the requested order", () => {
+test("all eight featured projects appear in the requested order", () => {
   assert.deepEqual(featuredNames, [
     "DOT AI",
     "Scene Studio",
@@ -20,6 +20,7 @@ test("all seven featured projects appear in the requested order", () => {
     "Autonomous Driving Research",
     "Studly Prototype",
     "DragonLume",
+    "PyDangeon",
   ]);
 });
 
@@ -69,6 +70,7 @@ test("verified GitHub links are attached to the corresponding featured project",
     ["Deep Reinforcement Learning for Gaming", "https://github.com/Forkan01/Automatic-Game-Playing-with-DL--Autonomous-Sys.-B", false],
     ["Autonomous Driving Research", "https://github.com/Forkan01/HSHL_Research", false],
     ["DragonLume", "https://github.com/Forkan01/Dragonlume", true],
+    ["PyDangeon", "https://github.com/Forkan01/PyDangeon", true],
   ];
   for (const [title, url, privateRepo] of matches) {
     const entry = features[1].split(/(?=^\s+title:\s+")/m).find(s => s.startsWith("    title: " + JSON.stringify(title)));
@@ -137,4 +139,15 @@ test("Scene Studio links directly to its production website instead of a private
   assert.ok(scene);
   assert.ok(scene.includes('demo: "https://scene-studio-beige.vercel.app/"'));
   assert.doesNotMatch(scene, /github:|githubPrivate:/);
+});
+
+test("PyDangeon has a featured game card with verified scope and dedicated artwork", () => {
+  const entry = features[1].split(/(?=^\s+title:\s+")/m).find(s => s.startsWith('    title: "PyDangeon"'));
+  assert.ok(entry);
+  for (const label of ["Godot 4", "GDScript", "Python", "The First Spark", "The Rune Vault", "In development"]) assert.ok(entry.includes(label), label);
+  assert.match(entry, /art: "pydangeon"/);
+  assert.match(page, /project\.art === "pydangeon"/);
+  assert.match(page, /Gamepad2, Code2\]\[index\]/);
+  assert.match(page, /"EDTECH \+ GAME DEVELOPMENT"\]\[index\]/);
+  assert.match(css, /\.art-pydangeon/);
 });

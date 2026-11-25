@@ -18,7 +18,7 @@ type Project = {
   tech: string[];
   categories: Category[];
   style: "blue" | "red" | "green" | "yellow" | "purple" | "cyan";
-  art: "dots" | "scene" | "translate" | "snake" | "research" | "study" | "notes" | "todo" | "dragon" | "dragonlume" | "drone" | "brain" | "goals" | "embedded" | "code";
+  art: "dots" | "scene" | "translate" | "snake" | "research" | "study" | "notes" | "todo" | "dragon" | "dragonlume" | "pydangeon" | "drone" | "brain" | "goals" | "embedded" | "code";
   status?: "In development" | "Prototype";
   image?: string;
   demo?: string;
@@ -92,6 +92,16 @@ const featured: Project[] = [
     categories: ["Games"],
     style: "purple", art: "dragonlume", status: "In development",
     github: "https://github.com/Forkan01/Dragonlume",
+    githubPrivate: true,
+  },
+  {
+    title: "PyDangeon",
+    subtitle: "Learn Python through dungeon adventures",
+    description: "Godot 4 educational RPG with interactive coding puzzles, introductory Python statements and variables, XP rewards, and room progression through The First Spark and The Rune Vault.",
+    tech: ["Godot 4", "GDScript", "Python", "Game Design"],
+    categories: ["Games"],
+    style: "cyan", art: "pydangeon", status: "In development",
+    github: "https://github.com/Forkan01/PyDangeon",
     githubPrivate: true,
   },
 ];
@@ -182,6 +192,7 @@ function ProjectArt({ project }: { project: Project }) {
         {project.art === "scene" && <div className="scene-art"><div className="scene-preview"><Video size={32} strokeWidth={1.5}/><span>Infographic scenes</span><div className="scene-shapes"><i/><i/><i/></div></div><div className="scene-timeline"><span>SCENE 01</span><div><i/><i/><i/></div><small>00:08</small></div></div>}
         {project.art === "translate" && <div className="translate-art"><span className="translate-kicker">DEUTSCH ↔ ENGLISH</span><strong>lernen <span>→</span> learn</strong><p>verb · to acquire knowledge</p><div><span>Meaning</span><span>Grammar</span><span>Examples</span></div></div>}
         {project.art === "dragonlume" && <div className="dragonlume-art"><span>🐲</span><b>DragonLume</b><small>3D GAME · IN DEVELOPMENT</small></div>}
+        {project.art === "pydangeon" && <div className="pydangeon-art"><span className="pydangeon-torch">✦</span><strong>PyDangeon</strong><code>print("Hello, Dungeon!")</code><small>PYTHON · PUZZLES · RPG</small></div>}
         {project.art === "snake" && <div className="snake-demo"><div className="snake-board">{Array.from({length: 70}, (_, i) => <span key={i} className={[10,11,12,22,32,42,43,44,45].includes(i) ? "snake-bit" : i === 52 ? "snake-food" : ""}/>)}</div><div className="snake-score">SCORE <strong>024</strong><small>MODEL: DQN</small><span className="score-line"/></div></div>}
         {project.art === "research" && <div className="research-art"><div className="radar radar-1"/><div className="radar radar-2"/><ScanEye size={44}/><span className="car-icon">🚘</span><span className="sensor-label">OBJECT DETECTED</span></div>}
         {project.art === "study" && <div className="study-art"><span>My workspace</span><div className="study-metrics"><b>04<small>Learning paths</small></b><b>12<small>Tasks complete</small></b><b>85%<small>Progress</small></b></div><div className="study-bars"><i/><i/><i/></div></div>}
@@ -229,10 +240,10 @@ function IconLink({ href, children, primary = false, privateRepo = false }: { hr
 }
 
 function FeaturedCard({ project, index }: { project: Project; index: number }) {
-  const Icon = [Rocket, Video, Languages, BrainCircuit, ScanEye, GraduationCap, Gamepad2][index];
+  const Icon = [Rocket, Video, Languages, BrainCircuit, ScanEye, GraduationCap, Gamepad2, Code2][index] ?? Code2;
   return (
     <article className={"featured-card tone-" + project.style}>
-      <div className="featured-category"><span className="category-icon"><Icon size={18}/></span><span>{["AI + SOFTWARE ENGINEERING", "INFOGRAPHICS + VIDEO", "EDTECH + LANGUAGES", "ALGORITHMS + AI", "RESEARCH + SYSTEMS", "EDTECH + PRODUCT", "GAME DEVELOPMENT"][index]}</span></div>
+      <div className="featured-category"><span className="category-icon"><Icon size={18}/></span><span>{["AI + SOFTWARE ENGINEERING", "INFOGRAPHICS + VIDEO", "EDTECH + LANGUAGES", "ALGORITHMS + AI", "RESEARCH + SYSTEMS", "EDTECH + PRODUCT", "GAME DEVELOPMENT", "EDTECH + GAME DEVELOPMENT"][index] ?? "PROJECT"}</span></div>
       <h3>{project.title}</h3>
       <p className="project-subtitle">{project.subtitle}</p>
       {project.status && <span className="project-status">{project.status}</span>}
