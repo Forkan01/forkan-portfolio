@@ -339,7 +339,7 @@ export default function Home() {
           <div className="hero-links">
             <a href="https://github.com/Forkan01" target="_blank" rel="noopener noreferrer"><Github size={17}/> GitHub</a>
             <a href="https://www.linkedin.com/in/forkan02/" target="_blank" rel="noopener noreferrer"><Linkedin size={17}/> LinkedIn</a>
-            <a href="mailto:Abdullah-al.forkan@stud.hshl.de"><Mail size={17}/> Email</a>
+            <a href="mailto:aaforkan29@gmail.com"><Mail size={17}/> Email</a>
           </div>
         </div>
         <div className="hero-visual">
@@ -401,11 +401,11 @@ export default function Home() {
       </section>
 
       <section className="section contact-section" id="contact" aria-labelledby="contact-title">
-        <div className="site-container contact-inner"><div><span className="section-label">LET'S CONNECT</span><h2 id="contact-title">Have an idea or <em>opportunity?</em></h2><p>I'm interested in software engineering, AI and applied research opportunities — and in meeting people who love building things.</p></div><a className="contact-button" href="mailto:Abdullah-al.forkan@stud.hshl.de?subject=Hello%20from%20your%20portfolio"><Mail size={19}/> Send me an email <ArrowUpRight size={18}/></a></div>
+        <div className="site-container contact-inner"><div><span className="section-label">LET'S CONNECT</span><h2 id="contact-title">Have an idea or <em>opportunity?</em></h2><p>I'm interested in software engineering, AI and applied research opportunities — and in meeting people who love building things.</p></div><a className="contact-button" href="mailto:aaforkan29@gmail.com?subject=Hello%20from%20your%20portfolio"><Mail size={19}/> Send me an email <ArrowUpRight size={18}/></a></div>
       </section>
 
       </main>
-      <footer className="site-footer"><div className="site-container footer-inner"><span><strong>AF<span className="blue-dot">.</span></strong> © {new Date().getFullYear()} Abdullah Al Forkan</span><span>Built with curiosity <span className="footer-spark">✦</span></span><div><a href="https://github.com/Forkan01" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={19}/></a><a href="https://www.linkedin.com/in/forkan02/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={19}/></a><a href="mailto:Abdullah-al.forkan@stud.hshl.de" aria-label="Email"><Mail size={19}/></a></div></div></footer>
+      <footer className="site-footer"><div className="site-container footer-inner"><span><strong>AF<span className="blue-dot">.</span></strong> © {new Date().getFullYear()} Abdullah Al Forkan</span><span>Built with curiosity <span className="footer-spark">✦</span></span><div><a href="https://github.com/Forkan01" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={19}/></a><a href="https://www.linkedin.com/in/forkan02/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={19}/></a><a href="mailto:aaforkan29@gmail.com" aria-label="Email"><Mail size={19}/></a></div></div></footer>
     </>
   );
 }

@@ -60,7 +60,7 @@ No deployment or GitHub Actions workflow is required to preview locally. Before 
 
 ## Contact
 
-Portfolio email uses the HSHL student address. Update the links if you prefer another contact email. No placeholder Download CV button is presented; add a PDF before enabling that action.
+Portfolio contact email: `aaforkan29@gmail.com`. No placeholder Download CV button is presented; add a PDF before enabling that action.
 
 ## Degree and social sharing
 
