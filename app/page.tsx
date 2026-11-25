@@ -18,16 +18,27 @@ type Project = {
   tech: string[];
   categories: Category[];
   style: "blue" | "red" | "green" | "yellow" | "purple" | "cyan";
-  art: "dots" | "scene" | "translate" | "snake" | "research" | "study" | "notes" | "todo" | "dragon" | "dragonlume" | "pydangeon" | "drone" | "brain" | "goals" | "embedded" | "code";
+  art: "particle" | "dots" | "scene" | "translate" | "snake" | "research" | "study" | "notes" | "todo" | "dragon" | "dragonlume" | "pydangeon" | "drone" | "brain" | "goals" | "embedded" | "code";
   status?: "In development" | "Prototype";
   image?: string;
   demo?: string;
+  educationDemo?: string;
   github?: string;
   githubPrivate?: boolean;
   details?: string;
 };
 
 const featured: Project[] = [
+  {
+    title: "Particle Engine AI",
+    subtitle: "Interactive particle engine & visual learning",
+    description: "Browser-based particle playground with 78 procedural formations, smooth morphing, adaptive detail up to 12,000 particles, and five interactive science and mathematics lessons. Runs locally without AI APIs.",
+    tech: ["Next.js", "TypeScript", "Canvas 2D", "Procedural Geometry"],
+    categories: ["Web Apps", "Systems"],
+    style: "blue", art: "particle",
+    demo: "https://particle-ai-ochre.vercel.app/",
+    educationDemo: "https://particle-ai-ochre.vercel.app/education",
+  },
   {
     title: "DOT AI",
     subtitle: "AI-powered visual learning and creation",
@@ -187,7 +198,8 @@ function ProjectArt({ project }: { project: Project }) {
   return (
     <div className={"project-art art-" + project.art + (project.image && !failed ? " has-screenshot" : "")}>
       <div className="art-fallback" aria-hidden="true">
-        <span className="art-corner">{project.art === "snake" ? "AI / TRAINING" : project.art === "research" ? "SENSORS / SIMULATION" : "BUILD / CREATE"}</span>
+        <span className="art-corner">{project.art === "particle" ? "PARTICLES / LEARNING" : project.art === "snake" ? "AI / TRAINING" : project.art === "research" ? "SENSORS / SIMULATION" : "BUILD / CREATE"}</span>
+        {project.art === "particle" && <div className="particle-project-art"><svg viewBox="0 0 200 120" aria-hidden="true" focusable="false">{Array.from({length:210},(_,i)=>{const y=1-2*(i+.5)/210,r=Math.sqrt(1-y*y),a=i*Math.PI*(3-Math.sqrt(5)),x=r*Math.cos(a),z=r*Math.sin(a),k=3.6/(3.6-z);return {x:100+x*44*k,y:60+y*44*k,z};}).sort((a,b)=>a.z-b.z).map((p,i)=><circle key={i} cx={p.x} cy={p.y} r={.55+(p.z+1)*.5} fill="#111827" opacity={.18+(p.z+1)*.38}/>)}</svg><span>78 shapes · 12,000 particles</span></div>}
         {project.art === "dots" && <div className="demo-interface"><span className="demo-sidebar">✦<br/>◻<br/>◎<br/>⌘</span><div className="demo-canvas"><Rocket size={58} strokeWidth={1.6}/><i className="dot dot-a"/><i className="dot dot-b"/><i className="dot dot-c"/></div><span className="demo-tools">Generate<br/>Modify<br/>Explore</span></div>}
         {project.art === "scene" && <div className="scene-art"><div className="scene-preview"><Video size={32} strokeWidth={1.5}/><span>Infographic scenes</span><div className="scene-shapes"><i/><i/><i/></div></div><div className="scene-timeline"><span>SCENE 01</span><div><i/><i/><i/></div><small>00:08</small></div></div>}
         {project.art === "translate" && <div className="translate-art"><span className="translate-kicker">DEUTSCH ↔ ENGLISH</span><strong>lernen <span>→</span> learn</strong><p>verb · to acquire knowledge</p><div><span>Meaning</span><span>Grammar</span><span>Examples</span></div></div>}
@@ -240,10 +252,10 @@ function IconLink({ href, children, primary = false, privateRepo = false }: { hr
 }
 
 function FeaturedCard({ project, index }: { project: Project; index: number }) {
-  const Icon = [Rocket, Video, Languages, BrainCircuit, ScanEye, GraduationCap, Gamepad2, Code2][index] ?? Code2;
+  const Icon = [Layers3, Rocket, Video, Languages, BrainCircuit, ScanEye, GraduationCap, Gamepad2, Code2][index] ?? Code2;
   return (
     <article className={"featured-card tone-" + project.style}>
-      <div className="featured-category"><span className="category-icon"><Icon size={18}/></span><span>{["AI + SOFTWARE ENGINEERING", "INFOGRAPHICS + VIDEO", "EDTECH + LANGUAGES", "ALGORITHMS + AI", "RESEARCH + SYSTEMS", "EDTECH + PRODUCT", "GAME DEVELOPMENT", "EDTECH + GAME DEVELOPMENT"][index] ?? "PROJECT"}</span></div>
+      <div className="featured-category"><span className="category-icon"><Icon size={18}/></span><span>{["VISUAL ENGINE + EDTECH", "AI + SOFTWARE ENGINEERING", "INFOGRAPHICS + VIDEO", "EDTECH + LANGUAGES", "ALGORITHMS + AI", "RESEARCH + SYSTEMS", "EDTECH + PRODUCT", "GAME DEVELOPMENT", "EDTECH + GAME DEVELOPMENT"][index] ?? "PROJECT"}</span></div>
       <h3>{project.title}</h3>
       <p className="project-subtitle">{project.subtitle}</p>
       {project.status && <span className="project-status">{project.status}</span>}
@@ -251,7 +263,8 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
       <p className="featured-description">{project.description}</p>
       <div className="tech-tags">{project.tech.map(t => <span key={t}>{t}</span>)}</div>
       <div className="project-actions">
-        {project.demo && <IconLink href={project.demo} primary>Live Demo</IconLink>}
+        {project.demo && <IconLink href={project.demo} primary>{project.educationDemo ? "Playground" : "Live Demo"}</IconLink>}
+        {project.educationDemo && <IconLink href={project.educationDemo}>Education Demo</IconLink>}
         {project.details && <IconLink href={project.details} primary>Experience</IconLink>}
         {project.github && <IconLink href={project.github} primary={!project.demo && !project.githubPrivate} privateRepo={project.githubPrivate}><Github size={15} /> {project.githubPrivate ? "GitHub (private)" : "GitHub"}</IconLink>}
       </div>

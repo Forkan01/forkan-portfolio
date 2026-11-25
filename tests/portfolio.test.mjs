@@ -11,8 +11,9 @@ const features = page.match(/const featured: Project\[\] = \[([\s\S]*?)\n\];/);
 assert.ok(features, "Featured projects array must be present");
 const featuredNames = [...features[1].matchAll(/^\s+title:\s+"([^"]+)"/gm)].map((match) => match[1]);
 
-test("all eight featured projects appear in the requested order", () => {
+test("all nine featured projects appear in the requested order", () => {
   assert.deepEqual(featuredNames, [
+    "Particle Engine AI",
     "DOT AI",
     "Scene Studio",
     "LearnTranslate",
@@ -150,4 +151,16 @@ test("PyDangeon has a featured game card with verified scope and dedicated artwo
   assert.match(page, /Gamepad2, Code2\]\[index\]/);
   assert.match(page, /"EDTECH \+ GAME DEVELOPMENT"\]\[index\]/);
   assert.match(css, /\.art-pydangeon/);
+});
+
+
+test("Particle Engine AI is first and has both production links and its own illustration",()=>{
+  assert.equal(featuredNames[0],"Particle Engine AI");
+  const entry=features[1].split(/(?=^\s+title:\s+")/m).find(s=>s.startsWith('    title: "Particle Engine AI"'));
+  assert.ok(entry);
+  assert.match(entry,/demo: "https:\/\/particle-ai-ochre\.vercel\.app\/"/);
+  assert.match(entry,/educationDemo: "https:\/\/particle-ai-ochre\.vercel\.app\/education"/);
+  assert.match(page,/href=\{project\.educationDemo\}>Education Demo/);
+  assert.match(page,/project\.art === "particle"/);
+  assert.match(css,/\.art-particle/);
 });
