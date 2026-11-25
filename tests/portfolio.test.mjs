@@ -84,3 +84,16 @@ test("More Projects show labeled links rather than icon-only actions", () => {
   assert.match(page, /<Github size=\{14\}\/><span>GitHub<\/span>/);
   assert.match(css, /\.mini-links a\s*\{/);
 });
+
+
+test("degree, screenshot and accessibility improvements are present", () => {
+  assert.match(page, /B\.Eng\. \(in progress\)/);
+  assert.doesNotMatch(page, /B\.Sc\./);
+  assert.ok(existsSync(join(root, "public/projects/todo-flutter.png")));
+  assert.ok(existsSync(join(root, "app/icon.svg")));
+  assert.ok(existsSync(join(root, "app/opengraph-image.tsx")));
+  assert.ok(!existsSync(join(root, "CVpic.png")));
+  assert.match(page, /className="skip-link"/);
+  assert.match(page, /role="status"/);
+  assert.match(page, /fetchPriority="high"/);
+});

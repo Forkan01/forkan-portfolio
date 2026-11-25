@@ -43,11 +43,11 @@ Descriptions indicate development/prototype status where relevant. Links point t
 
 ## Profile picture
 
-The uploaded `CVpic.png` has been copied to `public/CVpic.png` so Next.js can serve it at `/CVpic.png`. The original repository-root copy is retained. If the picture fails to load, the hero falls back to the public GitHub avatar.
+The uploaded `CVpic.png` has been copied to `public/CVpic.png` so Next.js can serve it at `/CVpic.png`. The redundant repository-root copy has been removed; the public asset is the single source. If the picture fails to load, the hero falls back to the public GitHub avatar.
 
 ## Project artwork
 
-The design uses hand-built CSS/HTML illustrations where project screenshots have not been committed. This deliberately avoids broken image icons or pretending illustrations are exact product screenshots.
+The Todo Flutter card uses the real screenshot from `Forkan01/Todo_Flutter/App_picture.png`. Other cards use clearly labeled CSS/HTML illustrations until real project screenshots are provided. This deliberately avoids broken image icons or pretending illustrations are exact product screenshots.
 
 To replace a card's illustrative art with a real screenshot, put the image under `public/projects/` and add `image: "/projects/name.png"` to the corresponding project object in `app/page.tsx`.
 
@@ -55,8 +55,12 @@ To replace a card's illustrative art with a real screenshot, put the image under
 
 Run `npm test` to verify requested featured-project order, anchored navigation, photo path, filter UI and local image references. Run `npm run typecheck` and `npm run build` for full TypeScript and production checks.
 
-No deployment or GitHub Actions workflow is required to preview locally.
+No deployment or GitHub Actions workflow is required to preview locally. Before release, check keyboard navigation, mobile viewports (320–430px), image loading and production Lighthouse performance.
 
 ## Contact
 
 Portfolio email uses the HSHL student address. Update the links if you prefer another contact email. No placeholder Download CV button is presented; add a PDF before enabling that action.
+
+## Degree and social sharing
+
+HSHL's [Electronic Engineering programme](https://www.hshl.de/en/studying/en-study-programs/en-bachelors-programs/en-electronic-engineering/) awards a Bachelor of Engineering (B.Eng.); the site marks it as in progress. A local SVG icon and a static Next.js Open Graph image provide branded sharing previews. No domain is assumed before deployment.

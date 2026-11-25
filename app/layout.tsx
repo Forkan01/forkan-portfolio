@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Abdullah Al Forkan | Software, AI & Engineering",
   description:
     "Portfolio of Abdullah Al Forkan — software development, AI and machine learning, mobile apps, engineering research, and games.",
+  twitter: { card: "summary_large_image", title: "Abdullah Al Forkan | Portfolio", description: "Software engineering, AI, autonomous systems and creative projects." },
   openGraph: {
     title: "Abdullah Al Forkan | Portfolio",
     description: "Software engineering, AI, autonomous systems and creative projects.",
