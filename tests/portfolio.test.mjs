@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { getScrollProgress } from "../app/scroll-progress-utils.mjs";
 
 const root = process.cwd();
 const page = readFileSync(join(root, "app/page.tsx"), "utf8");
@@ -96,4 +97,27 @@ test("degree, screenshot and accessibility improvements are present", () => {
   assert.match(page, /className="skip-link"/);
   assert.match(page, /role="status"/);
   assert.match(page, /fetchPriority="high"/);
+});
+
+
+test("scroll progress correctly clamps and handles non-scrollable pages", () => {
+  assert.equal(getScrollProgress(0, 2000, 1000), 0);
+  assert.equal(getScrollProgress(250, 2000, 1000), 25);
+  assert.equal(getScrollProgress(1000, 2000, 1000), 100);
+  assert.equal(getScrollProgress(-20, 2000, 1000), 0);
+  assert.equal(getScrollProgress(2000, 2000, 1000), 100);
+  assert.equal(getScrollProgress(0, 1000, 1000), 0);
+  assert.equal(getScrollProgress(NaN, 2000, 1000), 0);
+});
+
+test("header uses the scroll dial instead of a duplicate contact action", () => {
+  const dial = readFileSync(join(root, "app/scroll-progress.tsx"), "utf8");
+  assert.match(page, /<ScrollProgress \/>/);
+  assert.doesNotMatch(page, /className="nav-cta"/);
+  assert.match(dial, /window\.scrollTo/);
+  assert.match(dial, /requestAnimationFrame/);
+  assert.match(dial, /prefers-reduced-motion/);
+  assert.match(dial, /ResizeObserver/);
+  assert.match(dial, /aria-label=/);
+  assert.match(css, /\.scroll-dial-fill/);
 });
