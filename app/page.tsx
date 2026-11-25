@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ScrollProgress from "./scroll-progress";
+import ParticleSphere from "./particle-sphere";
 import {
   ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Check,
   Code2, ExternalLink, FileText, Github,
@@ -300,7 +300,7 @@ export default function Home() {
           <nav id="primary-navigation" className={menuOpen ? "site-nav nav-open" : "site-nav"} aria-label="Main navigation">
             {navLinks.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}
           </nav>
-          <ScrollProgress />
+          <ParticleSphere />
           <button id="mobile-menu-toggle" className="mobile-menu-button" type="button" aria-controls="primary-navigation" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(v => !v)}>{menuOpen ? <X size={23}/> : <Menu size={23}/>}</button>
         </div>
       </header>

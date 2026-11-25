@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { getScrollProgress } from "../app/scroll-progress-utils.mjs";
+import { SECTION_COLORS, createSpherePoints, createSphereEdges, scrollFraction, activeSectionIndex } from "../app/particle-sphere-utils.mjs";
 
 const root = process.cwd();
 const page = readFileSync(join(root, "app/page.tsx"), "utf8");
@@ -100,24 +100,32 @@ test("degree, screenshot and accessibility improvements are present", () => {
 });
 
 
-test("scroll progress correctly clamps and handles non-scrollable pages", () => {
-  assert.equal(getScrollProgress(0, 2000, 1000), 0);
-  assert.equal(getScrollProgress(250, 2000, 1000), 25);
-  assert.equal(getScrollProgress(1000, 2000, 1000), 100);
-  assert.equal(getScrollProgress(-20, 2000, 1000), 0);
-  assert.equal(getScrollProgress(2000, 2000, 1000), 100);
-  assert.equal(getScrollProgress(0, 1000, 1000), 0);
-  assert.equal(getScrollProgress(NaN, 2000, 1000), 0);
+test("particle sphere geometry is deterministic and bounded", () => {
+  const points = createSpherePoints(130);
+  assert.equal(points.length, 130);
+  assert.deepEqual(points, createSpherePoints(130));
+  assert.ok(points.every(p => Math.abs(p.x*p.x+p.y*p.y+p.z*p.z-1)<1e-10));
+  const edges = createSphereEdges(points);
+  assert.ok(edges.length > 0 && edges.length < 600);
+  assert.ok(edges.every(([a,b]) => a>=0 && b<130 && a<b));
 });
 
-test("header uses the scroll dial instead of a duplicate contact action", () => {
-  const dial = readFileSync(join(root, "app/scroll-progress.tsx"), "utf8");
-  assert.match(page, /<ScrollProgress \/>/);
-  assert.doesNotMatch(page, /className="nav-cta"/);
-  assert.match(dial, /window\.scrollTo/);
-  assert.match(dial, /requestAnimationFrame/);
-  assert.match(dial, /prefers-reduced-motion/);
-  assert.match(dial, /ResizeObserver/);
-  assert.match(dial, /aria-label=/);
-  assert.match(css, /\.scroll-dial-fill/);
+test("particle scroll state clamps progress and detects active sections", () => {
+  assert.equal(scrollFraction(250,2000,1000),0.25);
+  assert.equal(scrollFraction(-20,2000,1000),0);
+  assert.equal(scrollFraction(2000,2000,1000),1);
+  assert.equal(scrollFraction(0,1000,1000),0);
+  assert.equal(scrollFraction(NaN,2000,1000),0);
+  assert.equal(activeSectionIndex([0,100,200,300,400],250,false),2);
+  assert.equal(activeSectionIndex([0,100,200,300,400],350,true),4);
+  assert.equal(SECTION_COLORS.length,5);
+});
+
+test("header uses an accessible scroll-reactive particle sphere", () => {
+  const sphere = readFileSync(join(root,"app/particle-sphere.tsx"),"utf8");
+  assert.match(page, /<ParticleSphere \/>/);
+  assert.doesNotMatch(page, /<ScrollProgress|className="nav-cta"/);
+  for (const token of ["requestAnimationFrame","cancelAnimationFrame","ResizeObserver","prefers-reduced-motion","visibilitychange","Pause particle animation","Back to top","activeSectionIndex"]) assert.ok(sphere.includes(token), token);
+  assert.match(css,/\.particle-sphere-canvas/);
+  assert.doesNotMatch(css,/\.scroll-dial/);
 });
