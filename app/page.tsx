@@ -6,7 +6,7 @@ import {
   ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Check,
   Code2, ExternalLink, FileText, Github,
   GraduationCap, Layers3, Linkedin, Mail, Menu, MonitorCog, Rocket,
-  ScanEye, Video, Languages, Gamepad2, LockKeyhole, X,
+  ScanEye, Video, Languages, Gamepad2, LockKeyhole, Phone, X,
 } from "lucide-react";
 
 type Category = "Web Apps" | "Games" | "AI / ML" | "Systems" | "Embedded" | "Research" | "Mobile Apps";
@@ -340,6 +340,7 @@ export default function Home() {
             <a href="https://github.com/Forkan01" target="_blank" rel="noopener noreferrer"><Github size={17}/> GitHub</a>
             <a href="https://www.linkedin.com/in/forkan02/" target="_blank" rel="noopener noreferrer"><Linkedin size={17}/> LinkedIn</a>
             <a href="mailto:aaforkan29@gmail.com"><Mail size={17}/> Email</a>
+            <a href="/CV_Forkan.pdf" download><FileText size={17}/> Download CV</a>
           </div>
         </div>
         <div className="hero-visual">
@@ -401,7 +402,7 @@ export default function Home() {
       </section>
 
       <section className="section contact-section" id="contact" aria-labelledby="contact-title">
-        <div className="site-container contact-inner"><div><span className="section-label">LET'S CONNECT</span><h2 id="contact-title">Have an idea or <em>opportunity?</em></h2><p>I'm interested in software engineering, AI and applied research opportunities — and in meeting people who love building things.</p></div><a className="contact-button" href="mailto:aaforkan29@gmail.com?subject=Hello%20from%20your%20portfolio"><Mail size={19}/> Send me an email <ArrowUpRight size={18}/></a></div>
+        <div className="site-container contact-inner"><div><span className="section-label">LET'S CONNECT</span><h2 id="contact-title">Have an idea or <em>opportunity?</em></h2><p>I'm interested in software engineering, AI and applied research opportunities — and in meeting people who love building things.</p><p><a href="tel:+4915228630727"><Phone size={16} aria-hidden="true"/> +49 152 28630727</a></p></div><a className="contact-button" href="mailto:aaforkan29@gmail.com?subject=Hello%20from%20your%20portfolio"><Mail size={19}/> Send me an email <ArrowUpRight size={18}/></a></div>
       </section>
 
       </main>
